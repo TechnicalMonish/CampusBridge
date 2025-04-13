@@ -4,7 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 
 interface Submission {
-  studentId: string;
+  studentId: string | number; // Updated to accept both string and number
   problemId: number;
   language: 'python' | 'java' | 'c' | 'cpp';
   code: string;

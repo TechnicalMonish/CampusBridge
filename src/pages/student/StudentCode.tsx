@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useData } from '@/contexts/DataContext';
@@ -33,7 +32,6 @@ const StudentCode: React.FC = () => {
       status: 'pending'
     });
     
-    // In a real app, we would send the code to a backend for compilation/testing
     setTimeout(() => {
       toast.success('Your solution has been evaluated!');
     }, 2000);
@@ -49,7 +47,6 @@ const StudentCode: React.FC = () => {
         <h1 className="dashboard-title">Coding Practice</h1>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left Column - Profile and Problem List */}
           <div className="lg:col-span-1">
             <StudentProfile user={user} />
             <ProblemList 
@@ -60,7 +57,6 @@ const StudentCode: React.FC = () => {
             />
           </div>
           
-          {/* Right Column - Problem Details and Submissions */}
           <div className="lg:col-span-2">
             <ProblemDetail 
               problem={selectedProblemData}

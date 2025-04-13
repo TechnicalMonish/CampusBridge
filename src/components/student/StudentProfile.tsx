@@ -6,7 +6,7 @@ import { Separator } from '@/components/ui/separator';
 import ProfileEditor from '@/components/student/ProfileEditor';
 
 interface User {
-  id: string;
+  id: string | number; // Updated to accept both string and number
   name: string;
   email: string;
   role: string;
