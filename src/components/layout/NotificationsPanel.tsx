@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Popover,
   PopoverContent,
@@ -18,8 +17,32 @@ interface Notification {
   read: boolean;
 }
 
+const SAMPLE_NOTIFICATIONS: Notification[] = [
+  {
+    id: 1,
+    title: 'Assignment Due Soon',
+    message: 'Your "Basic Programming Concepts" assignment is due in 2 days.',
+    timestamp: '2025-04-28T10:30:00',
+    read: false
+  },
+  {
+    id: 2,
+    title: 'Course Material Added',
+    message: 'New lecture slides for "Data Structures" have been uploaded.',
+    timestamp: '2025-04-27T14:15:00',
+    read: false
+  },
+  {
+    id: 3,
+    title: 'Grade Posted',
+    message: 'You received a grade for "Control Structures" assignment.',
+    timestamp: '2025-04-26T09:45:00',
+    read: true
+  }
+];
+
 const NotificationsPanel: React.FC = () => {
-  const [notifications, setNotifications] = useState<Notification[]>([]);
+  const [notifications, setNotifications] = useState<Notification[]>(SAMPLE_NOTIFICATIONS);
   const [open, setOpen] = useState(false);
   
   const markAllAsRead = () => {
@@ -40,6 +63,31 @@ const NotificationsPanel: React.FC = () => {
   };
   
   const unreadCount = notifications.filter(n => !n.read).length;
+
+  const formatTimestamp = (timestamp: string) => {
+    const date = new Date(timestamp);
+    const now = new Date();
+    
+    // Check if it's today
+    if (date.toDateString() === now.toDateString()) {
+      return `Today at ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+    }
+    
+    // Check if it's yesterday
+    const yesterday = new Date();
+    yesterday.setDate(now.getDate() - 1);
+    if (date.toDateString() === yesterday.toDateString()) {
+      return `Yesterday at ${date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+    }
+    
+    // Otherwise return the full date
+    return date.toLocaleString([], { 
+      month: 'short', 
+      day: 'numeric',
+      hour: '2-digit', 
+      minute: '2-digit'
+    });
+  };
   
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -47,7 +95,9 @@ const NotificationsPanel: React.FC = () => {
         <button className="relative p-2 rounded-full hover:bg-gray-100">
           <Bell className="h-5 w-5 text-gray-600" />
           {unreadCount > 0 && (
-            <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full"></span>
+            <span className="absolute top-0 right-0 h-4 w-4 bg-red-500 rounded-full flex items-center justify-center text-white text-xs">
+              {unreadCount}
+            </span>
           )}
         </button>
       </PopoverTrigger>
@@ -78,7 +128,7 @@ const NotificationsPanel: React.FC = () => {
               >
                 <div className="flex justify-between">
                   <h4 className="font-medium text-sm">{notification.title}</h4>
-                  <span className="text-xs text-gray-500">{notification.timestamp}</span>
+                  <span className="text-xs text-gray-500">{formatTimestamp(notification.timestamp)}</span>
                 </div>
                 <p className="text-sm text-gray-600 mt-1">{notification.message}</p>
               </div>

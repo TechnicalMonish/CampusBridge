@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { LogOut, BellRing } from 'lucide-react';
+import { LogOut, BellRing, BridgeCrossing } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import NotificationsPanel from './NotificationsPanel';
 import { toast } from 'sonner';
@@ -24,16 +24,19 @@ const Header: React.FC<HeaderProps> = ({ sidebarCollapsed }) => {
       sidebarCollapsed ? 'left-20' : 'left-64'
     }`}>
       <div className="flex items-center justify-between h-full px-6">
-        <h2 className="text-xl font-semibold text-gray-800 capitalize">
-          {user.role} Dashboard
-        </h2>
+        <div className="flex items-center">
+          <BridgeCrossing className="h-6 w-6 text-lms-blue mr-2 hidden sm:block" />
+          <h2 className="text-xl font-semibold text-gray-800 capitalize">
+            {user.role} Dashboard
+          </h2>
+        </div>
         
         <div className="flex items-center space-x-4">
           <NotificationsPanel />
           
           <button 
             onClick={handleLogout}
-            className="flex items-center text-gray-700 hover:text-lms-green transition-colors"
+            className="flex items-center text-gray-700 hover:text-lms-blue transition-colors"
           >
             <LogOut className="h-5 w-5 mr-1" />
             <span className="hidden sm:inline">Logout</span>

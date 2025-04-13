@@ -1,62 +1,60 @@
 
 import React, { ReactNode } from 'react';
-import { Card } from '@/components/ui/card';
-import { cn } from '@/lib/utils';
+import { Card, CardContent } from "@/components/ui/card";
+import { ArrowUp, ArrowDown } from "lucide-react";
 
 interface StatsCardProps {
   title: string;
   value: string | number;
-  icon?: ReactNode;
   description?: string;
+  icon?: ReactNode;
   trend?: {
     value: number;
     isPositive: boolean;
   };
-  className?: string;
 }
 
-const StatsCard: React.FC<StatsCardProps> = ({
-  title,
-  value,
+const StatsCard: React.FC<StatsCardProps> = ({ 
+  title, 
+  value, 
+  description, 
   icon,
-  description,
-  trend,
-  className
+  trend 
 }) => {
   return (
-    <Card className={cn("p-6 card-hover", className)}>
-      <div className="flex items-start justify-between">
-        <div>
-          <p className="text-sm font-medium text-gray-500">{title}</p>
-          <h3 className="text-2xl font-bold mt-1">{value}</h3>
-          
-          {trend && (
-            <div className="flex items-center mt-1">
-              <span className={cn(
-                "text-xs font-medium",
-                trend.isPositive ? "text-green-600" : "text-red-600"
-              )}>
-                {trend.isPositive ? "+" : "-"}{Math.abs(trend.value)}%
-              </span>
-              {description && (
-                <span className="text-xs text-gray-500 ml-1">
-                  {description}
-                </span>
-              )}
+    <Card>
+      <CardContent className="p-6">
+        <div className="flex items-center">
+          {icon && (
+            <div className="bg-lms-blue-light p-3 rounded-full mr-4">
+              {React.cloneElement(icon as React.ReactElement, { 
+                className: "h-6 w-6 text-lms-blue" 
+              })}
             </div>
           )}
-          
-          {!trend && description && (
-            <p className="text-xs text-gray-500 mt-1">{description}</p>
-          )}
-        </div>
-        
-        {icon && (
-          <div className="p-3 rounded-full bg-lms-blue-light text-lms-blue">
-            {icon}
+          <div>
+            <div className="flex items-center">
+              <h3 className="text-2xl font-semibold">{value}</h3>
+              
+              {trend && (
+                <div className={`flex items-center ml-2 text-sm ${
+                  trend.isPositive ? 'text-green-600' : 'text-red-600'
+                }`}>
+                  {trend.isPositive ? (
+                    <ArrowUp className="h-3 w-3 mr-1" />
+                  ) : (
+                    <ArrowDown className="h-3 w-3 mr-1" />
+                  )}
+                  {trend.value}%
+                </div>
+              )}
+            </div>
+            <p className="text-sm text-gray-500">
+              {title} {description && <span className="text-xs opacity-75">{description}</span>}
+            </p>
           </div>
-        )}
-      </div>
+        </div>
+      </CardContent>
     </Card>
   );
 };

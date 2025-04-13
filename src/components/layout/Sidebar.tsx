@@ -12,9 +12,11 @@ import {
   BarChart, 
   Home, 
   Settings,
-  User
+  User,
+  BridgeIcon
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { BridgeCrossing } from 'lucide-react';
 
 interface SidebarProps {
   collapsed: boolean;
@@ -77,11 +79,14 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, toggleCollapse }) => {
     )}>
       <div className="flex items-center justify-between p-4 border-b">
         {!collapsed && (
-          <h1 className="text-xl font-bold text-lms-green">Campus Bridge</h1>
+          <div className="flex items-center space-x-2">
+            <BridgeCrossing className="h-7 w-7 text-lms-blue" />
+            <h1 className="text-xl font-bold text-lms-blue">Campus Bridge</h1>
+          </div>
         )}
         <button 
           onClick={toggleCollapse}
-          className="p-2 rounded-full hover:bg-lms-green-light hover:text-lms-green transition-colors"
+          className="p-2 rounded-full hover:bg-lms-blue-light hover:text-lms-blue transition-colors"
         >
           {collapsed ? (
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-chevron-right">
@@ -100,12 +105,12 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, toggleCollapse }) => {
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
-              <li key={item.path}>
+              <li key={item.path} className="sidebar-item-hover">
                 <Link
                   to={item.path}
                   className={cn(
-                    "flex items-center p-3 rounded-lg text-gray-700 transition-all hover:bg-lms-green-light hover:text-lms-green hover:shadow-sm translate-y-0 hover:-translate-y-0.5 duration-200",
-                    location.pathname === item.path && "bg-lms-green-light text-lms-green font-medium"
+                    "flex items-center p-3 rounded-lg text-gray-700 transition-all hover:bg-lms-blue-light hover:text-lms-blue hover:shadow-sm translate-y-0 hover:-translate-y-0.5 duration-200",
+                    location.pathname === item.path && "bg-lms-blue-light text-lms-blue font-medium"
                   )}
                 >
                   <Icon className="h-5 w-5" />
@@ -120,7 +125,7 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, toggleCollapse }) => {
       <div className="p-4 border-t">
         {!collapsed && (
           <div className="flex items-center">
-            <div className="w-10 h-10 rounded-full bg-lms-green-light flex items-center justify-center text-lms-green font-semibold">
+            <div className="w-10 h-10 rounded-full bg-lms-blue-light flex items-center justify-center text-lms-blue font-semibold">
               {user.name.charAt(0)}
             </div>
             <div className="ml-3">

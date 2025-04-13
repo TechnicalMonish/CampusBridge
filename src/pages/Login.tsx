@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
@@ -7,6 +7,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from '@/components/ui/input';
 import { GraduationCap, School, Shield, User, BridgeCrossing } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
+import { toast } from 'sonner';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -17,10 +18,29 @@ const Login: React.FC = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
+  // Check for remembered email on component mount
+  useEffect(() => {
+    const rememberedEmail = localStorage.getItem('rememberedEmail');
+    if (rememberedEmail) {
+      setEmail(rememberedEmail);
+      setRememberMe(true);
+      
+      // Determine role based on email
+      if (rememberedEmail.includes('student')) {
+        setRole('student');
+      } else if (rememberedEmail.includes('faculty')) {
+        setRole('faculty');
+      } else if (rememberedEmail.includes('admin')) {
+        setRole('admin');
+      }
+    }
+  }, []);
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!email || !password) {
+      toast.error("Please enter both email and password");
       return;
     }
     
@@ -28,13 +48,14 @@ const Login: React.FC = () => {
     const success = await login(email, password);
     
     if (success) {
-      // If remember me is checked, we would store the credentials
+      // If remember me is checked, store the credentials
       if (rememberMe) {
         localStorage.setItem('rememberedEmail', email);
       } else {
         localStorage.removeItem('rememberedEmail');
       }
       navigate(`/${role}`);
+      toast.success(`Welcome to Campus Bridge!`);
     }
     setIsLoading(false);
   };
@@ -62,15 +83,15 @@ const Login: React.FC = () => {
       <div className="flex-1 flex flex-col justify-center items-center p-6 md:p-12">
         <div className="w-full max-w-md mb-6">
           <div className="flex items-center justify-center gap-2 mb-2">
-            <BridgeCrossing className="h-8 w-8 text-lms-green" />
-            <h1 className="text-3xl font-bold text-lms-green">Campus Bridge</h1>
+            <BridgeCrossing className="h-10 w-10 text-lms-blue" />
+            <h1 className="text-3xl font-bold text-lms-blue">Campus Bridge</h1>
           </div>
           <p className="text-center text-gray-500">Connecting education, empowering futures</p>
         </div>
         
-        <Card className="w-full max-w-md">
+        <Card className="w-full max-w-md shadow-lg">
           <CardHeader>
-            <CardTitle>Log in to your account</CardTitle>
+            <CardTitle className="text-lms-blue">Log in to your account</CardTitle>
             <CardDescription>
               Enter your credentials to access your dashboard
             </CardDescription>
@@ -84,7 +105,7 @@ const Login: React.FC = () => {
                   <Button
                     type="button"
                     variant={role === 'student' ? 'default' : 'outline'}
-                    className="flex flex-col items-center py-3 h-auto"
+                    className={`flex flex-col items-center py-3 h-auto ${role === 'student' ? 'bg-lms-blue hover:bg-lms-blue-dark' : ''}`}
                     onClick={() => fillDemoCredentials('student')}
                   >
                     <User className="h-5 w-5 mb-1" />
@@ -94,7 +115,7 @@ const Login: React.FC = () => {
                   <Button
                     type="button"
                     variant={role === 'faculty' ? 'default' : 'outline'}
-                    className="flex flex-col items-center py-3 h-auto"
+                    className={`flex flex-col items-center py-3 h-auto ${role === 'faculty' ? 'bg-lms-blue hover:bg-lms-blue-dark' : ''}`}
                     onClick={() => fillDemoCredentials('faculty')}
                   >
                     <GraduationCap className="h-5 w-5 mb-1" />
@@ -104,7 +125,7 @@ const Login: React.FC = () => {
                   <Button
                     type="button"
                     variant={role === 'admin' ? 'default' : 'outline'}
-                    className="flex flex-col items-center py-3 h-auto"
+                    className={`flex flex-col items-center py-3 h-auto ${role === 'admin' ? 'bg-lms-blue hover:bg-lms-blue-dark' : ''}`}
                     onClick={() => fillDemoCredentials('admin')}
                   >
                     <Shield className="h-5 w-5 mb-1" />
@@ -133,7 +154,7 @@ const Login: React.FC = () => {
                     <label htmlFor="password" className="text-sm font-medium">
                       Password
                     </label>
-                    <Link to="/forgot-password" className="text-xs text-lms-green hover:underline">
+                    <Link to="/login" className="text-xs text-lms-blue hover:underline">
                       Forgot password?
                     </Link>
                   </div>
@@ -160,7 +181,7 @@ const Login: React.FC = () => {
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-lms-green hover:bg-lms-green-dark"
+                  className="w-full bg-lms-blue hover:bg-lms-blue-dark"
                   disabled={isLoading}
                 >
                   {isLoading ? 'Logging in...' : 'Log in'}
@@ -178,7 +199,7 @@ const Login: React.FC = () => {
       </div>
       
       {/* Right side - Illustration */}
-      <div className="hidden md:flex md:w-1/2 bg-lms-green text-white">
+      <div className="hidden md:flex md:w-1/2 bg-lms-blue text-white">
         <div className="max-w-md mx-auto p-12 flex flex-col justify-center">
           <BridgeCrossing className="h-16 w-16 mb-6" />
           <h2 className="text-3xl font-bold mb-4">Welcome to Campus Bridge</h2>

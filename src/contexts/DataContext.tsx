@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState } from 'react';
 
 // Types for our data
@@ -9,8 +10,11 @@ export interface Course {
   description: string;
   thumbnail: string;
   enrolledStudents?: number[];
-  active: boolean; // Added missing property
-  credits: number; // Added missing property
+  active: boolean;
+  credits: number;
+  schedule?: string;
+  location?: string;
+  syllabus?: string;
 }
 
 export interface Assignment {
@@ -37,10 +41,10 @@ export interface Material {
   id: number;
   courseId: number;
   title: string;
-  type: 'pdf' | 'video' | 'document' | 'image'; // Updated to include 'image' type
+  type: 'pdf' | 'video' | 'document' | 'image';
   url: string;
   uploadDate: string;
-  size?: string; // Added missing property
+  size?: string;
 }
 
 export interface Attendance {
@@ -76,33 +80,70 @@ const COURSES: Course[] = [
     title: 'Introduction to Computer Science',
     code: 'CS101',
     instructor: 'Dr. Robert Johnson',
-    description: 'An introductory course covering the basics of computer science including algorithms, data structures, and programming fundamentals.',
-    thumbnail: '/placeholder.svg',
+    description: 'An introductory course covering the basics of computer science including algorithms, data structures, and programming fundamentals. Students will learn problem-solving techniques and develop a strong foundation in programming concepts.',
+    thumbnail: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=500&h=300',
     enrolledStudents: [1, 2],
-    active: true, // Added missing property
-    credits: 3 // Added missing property
+    active: true,
+    credits: 3,
+    schedule: 'Mon, Wed 10:00 - 11:30 AM',
+    location: 'Science Building, Room 302',
+    syllabus: 'https://example.com/cs101-syllabus'
   },
   {
     id: 2,
     title: 'Data Structures and Algorithms',
     code: 'CS201',
     instructor: 'Dr. Robert Johnson',
-    description: 'A comprehensive study of data structures and algorithms with practical applications in problem-solving.',
-    thumbnail: '/placeholder.svg',
+    description: 'A comprehensive study of data structures and algorithms with practical applications in problem-solving. This course builds upon programming fundamentals to explore efficient data organization and manipulation techniques.',
+    thumbnail: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=500&h=300',
     enrolledStudents: [1],
-    active: true, // Added missing property
-    credits: 4 // Added missing property
+    active: true,
+    credits: 4,
+    schedule: 'Tue, Thu 1:00 - 3:00 PM',
+    location: 'Computer Science Building, Room 105',
+    syllabus: 'https://example.com/cs201-syllabus'
   },
   {
     id: 3,
     title: 'Database Management Systems',
     code: 'CS301',
     instructor: 'Dr. Robert Johnson',
-    description: 'Learn the fundamentals of database design, implementation, and management with hands-on SQL practice.',
-    thumbnail: '/placeholder.svg',
+    description: 'Learn the fundamentals of database design, implementation, and management with hands-on SQL practice. Topics include relational database theory, normalization, query optimization, and database security principles.',
+    thumbnail: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=500&h=300',
     enrolledStudents: [2],
-    active: false, // Added missing property
-    credits: 3 // Added missing property
+    active: false,
+    credits: 3,
+    schedule: 'Mon, Wed, Fri 2:00 - 3:00 PM',
+    location: 'Technology Center, Room 450',
+    syllabus: 'https://example.com/cs301-syllabus'
+  },
+  {
+    id: 4,
+    title: 'Artificial Intelligence Fundamentals',
+    code: 'CS401',
+    instructor: 'Dr. Sarah Miller',
+    description: 'An introduction to artificial intelligence concepts, algorithms, and applications. Students will explore machine learning, neural networks, and problem-solving approaches used in modern AI systems.',
+    thumbnail: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=500&h=300',
+    enrolledStudents: [1, 2],
+    active: true,
+    credits: 4,
+    schedule: 'Tue, Thu 10:00 AM - 12:00 PM',
+    location: 'AI Lab, Science Building',
+    syllabus: 'https://example.com/cs401-syllabus'
+  },
+  {
+    id: 5,
+    title: 'Web Development',
+    code: 'CS350',
+    instructor: 'Prof. Michael Chen',
+    description: 'Comprehensive course on full-stack web development covering HTML, CSS, JavaScript, and modern frameworks. Students will build responsive web applications and learn about current web technologies and best practices.',
+    thumbnail: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=500&h=300',
+    enrolledStudents: [1],
+    active: true,
+    credits: 3,
+    schedule: 'Mon, Wed 3:30 - 5:00 PM',
+    location: 'Computer Lab 2, Room 203',
+    syllabus: 'https://example.com/cs350-syllabus'
   }
 ];
 
@@ -142,27 +183,27 @@ const MATERIALS: Material[] = [
     courseId: 1,
     title: 'Introduction to Algorithms',
     type: 'pdf',
-    url: '/placeholder.svg',
+    url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&h=300',
     uploadDate: '2025-04-01',
-    size: '2.4 MB' // Added missing property
+    size: '2.4 MB'
   },
   {
     id: 2,
     courseId: 1,
     title: 'Programming Basics Video Lecture',
     type: 'video',
-    url: '/placeholder.svg',
+    url: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=500&h=300',
     uploadDate: '2025-04-02',
-    size: '45 MB' // Added missing property
+    size: '45 MB'
   },
   {
     id: 3,
     courseId: 2,
     title: 'Data Structures Overview',
     type: 'pdf',
-    url: '/placeholder.svg',
+    url: 'https://images.unsplash.com/photo-1473091534298-04dcbce3278c?auto=format&fit=crop&w=500&h=300',
     uploadDate: '2025-04-03',
-    size: '1.8 MB' // Added missing property
+    size: '1.8 MB'
   }
 ];
 
@@ -201,6 +242,34 @@ const ATTENDANCE: Attendance[] = [
     studentId: 2,
     date: '2025-04-03',
     status: 'late'
+  },
+  {
+    id: 6,
+    courseId: 2,
+    studentId: 1,
+    date: '2025-04-02',
+    status: 'present'
+  },
+  {
+    id: 7,
+    courseId: 2,
+    studentId: 1,
+    date: '2025-04-04',
+    status: 'present'
+  },
+  {
+    id: 8,
+    courseId: 4,
+    studentId: 1,
+    date: '2025-04-03',
+    status: 'late'
+  },
+  {
+    id: 9,
+    courseId: 4,
+    studentId: 2,
+    date: '2025-04-03',
+    status: 'present'
   }
 ];
 
