@@ -101,7 +101,8 @@ const StudentAssignments: React.FC = () => {
                               {course?.code} - {course?.title}
                             </p>
                           </div>
-                          <Badge variant={submission?.grade ? "success" : "secondary"}>
+                          <Badge variant={submission?.grade ? "default" : "secondary"} 
+                            className={submission?.grade ? "bg-green-100 text-green-800" : ""}>
                             {submission?.grade 
                               ? `${submission.grade}/${assignment.points}` 
                               : "Submitted"}

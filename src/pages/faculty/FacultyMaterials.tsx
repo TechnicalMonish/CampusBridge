@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { BookText, FileText, File, Video, FileImage, Upload, Trash2 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState } from 'react';
 
 // Types for our data
@@ -10,6 +9,8 @@ export interface Course {
   description: string;
   thumbnail: string;
   enrolledStudents?: number[];
+  active: boolean; // Added missing property
+  credits: number; // Added missing property
 }
 
 export interface Assignment {
@@ -36,9 +37,10 @@ export interface Material {
   id: number;
   courseId: number;
   title: string;
-  type: 'pdf' | 'video' | 'document';
+  type: 'pdf' | 'video' | 'document' | 'image'; // Updated to include 'image' type
   url: string;
   uploadDate: string;
+  size?: string; // Added missing property
 }
 
 export interface Attendance {
@@ -76,7 +78,9 @@ const COURSES: Course[] = [
     instructor: 'Dr. Robert Johnson',
     description: 'An introductory course covering the basics of computer science including algorithms, data structures, and programming fundamentals.',
     thumbnail: '/placeholder.svg',
-    enrolledStudents: [1, 2]
+    enrolledStudents: [1, 2],
+    active: true, // Added missing property
+    credits: 3 // Added missing property
   },
   {
     id: 2,
@@ -85,7 +89,9 @@ const COURSES: Course[] = [
     instructor: 'Dr. Robert Johnson',
     description: 'A comprehensive study of data structures and algorithms with practical applications in problem-solving.',
     thumbnail: '/placeholder.svg',
-    enrolledStudents: [1]
+    enrolledStudents: [1],
+    active: true, // Added missing property
+    credits: 4 // Added missing property
   },
   {
     id: 3,
@@ -94,7 +100,9 @@ const COURSES: Course[] = [
     instructor: 'Dr. Robert Johnson',
     description: 'Learn the fundamentals of database design, implementation, and management with hands-on SQL practice.',
     thumbnail: '/placeholder.svg',
-    enrolledStudents: [2]
+    enrolledStudents: [2],
+    active: false, // Added missing property
+    credits: 3 // Added missing property
   }
 ];
 
@@ -135,7 +143,8 @@ const MATERIALS: Material[] = [
     title: 'Introduction to Algorithms',
     type: 'pdf',
     url: '/placeholder.svg',
-    uploadDate: '2025-04-01'
+    uploadDate: '2025-04-01',
+    size: '2.4 MB' // Added missing property
   },
   {
     id: 2,
@@ -143,7 +152,8 @@ const MATERIALS: Material[] = [
     title: 'Programming Basics Video Lecture',
     type: 'video',
     url: '/placeholder.svg',
-    uploadDate: '2025-04-02'
+    uploadDate: '2025-04-02',
+    size: '45 MB' // Added missing property
   },
   {
     id: 3,
@@ -151,7 +161,8 @@ const MATERIALS: Material[] = [
     title: 'Data Structures Overview',
     type: 'pdf',
     url: '/placeholder.svg',
-    uploadDate: '2025-04-03'
+    uploadDate: '2025-04-03',
+    size: '1.8 MB' // Added missing property
   }
 ];
 
