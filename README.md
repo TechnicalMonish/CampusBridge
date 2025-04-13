@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# Welcome to Campus Bridge LMS App
 
 ## Project info
 
