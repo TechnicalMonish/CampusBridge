@@ -3,7 +3,9 @@ import React from 'react';
 import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Separator } from '@/components/ui/separator';
-import ProfileEditor from '@/components/student/ProfileEditor';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Edit } from 'lucide-react';
 
 interface User {
   id: string | number; // Updated to accept both string and number
@@ -37,7 +39,14 @@ const StudentProfile: React.FC<StudentProfileProps> = ({ user }) => {
           <p className="text-sm mt-2">{user.bio || 'Computer Science student'}</p>
         </div>
         <Separator className="my-4" />
-        <ProfileEditor />
+        <div className="flex justify-center">
+          <Button variant="outline" size="sm" className="flex items-center gap-2" asChild>
+            <Link to="/student/profile">
+              <Edit size={16} />
+              <span>Edit Profile</span>
+            </Link>
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );

@@ -63,23 +63,23 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-        lms: {
-          blue: {
-            light: '#E3F2FD',
-            DEFAULT: '#2196F3',
-            dark: '#1565C0'
-          },
-          teal: {
-            light: '#E0F2F1',
-            DEFAULT: '#009688',
-            dark: '#00695C'
-          },
-          gray: {
-            light: '#F5F5F5',
-            DEFAULT: '#9E9E9E',
-            dark: '#424242'
-          }
-        }
+                lms: {
+                    green: {
+                        light: '#E3F9ED',
+                        DEFAULT: '#38B27B',
+                        dark: '#2A8C61'
+                    },
+                    purple: {
+                        light: '#F3E8FF',
+                        DEFAULT: '#8B5CF6',
+                        dark: '#6D28D9'
+                    },
+                    gray: {
+                        light: '#F5F5F5',
+                        DEFAULT: '#9E9E9E',
+                        dark: '#424242'
+                    }
+                }
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

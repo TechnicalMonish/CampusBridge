@@ -5,13 +5,15 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { GraduationCap, School, Shield, User } from 'lucide-react';
+import { GraduationCap, School, Shield, User, BridgeCrossing } from 'lucide-react';
+import { Checkbox } from '@/components/ui/checkbox';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState<'student' | 'faculty' | 'admin'>('student');
   const [isLoading, setIsLoading] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -26,6 +28,12 @@ const Login: React.FC = () => {
     const success = await login(email, password);
     
     if (success) {
+      // If remember me is checked, we would store the credentials
+      if (rememberMe) {
+        localStorage.setItem('rememberedEmail', email);
+      } else {
+        localStorage.removeItem('rememberedEmail');
+      }
       navigate(`/${role}`);
     }
     setIsLoading(false);
@@ -53,8 +61,11 @@ const Login: React.FC = () => {
       {/* Left side - Form */}
       <div className="flex-1 flex flex-col justify-center items-center p-6 md:p-12">
         <div className="w-full max-w-md mb-6">
-          <h1 className="text-3xl font-bold mb-2 text-center text-lms-blue">EduSphere</h1>
-          <p className="text-center text-gray-500">Your complete learning management solution</p>
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <BridgeCrossing className="h-8 w-8 text-lms-green" />
+            <h1 className="text-3xl font-bold text-lms-green">Campus Bridge</h1>
+          </div>
+          <p className="text-center text-gray-500">Connecting education, empowering futures</p>
         </div>
         
         <Card className="w-full max-w-md">
@@ -122,7 +133,7 @@ const Login: React.FC = () => {
                     <label htmlFor="password" className="text-sm font-medium">
                       Password
                     </label>
-                    <Link to="/forgot-password" className="text-xs text-lms-blue hover:underline">
+                    <Link to="/forgot-password" className="text-xs text-lms-green hover:underline">
                       Forgot password?
                     </Link>
                   </div>
@@ -136,9 +147,20 @@ const Login: React.FC = () => {
                   />
                 </div>
                 
+                <div className="flex items-center space-x-2">
+                  <Checkbox 
+                    id="remember" 
+                    checked={rememberMe} 
+                    onCheckedChange={(checked) => setRememberMe(checked === true)}
+                  />
+                  <label htmlFor="remember" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                    Remember me
+                  </label>
+                </div>
+                
                 <Button 
                   type="submit" 
-                  className="w-full bg-lms-blue hover:bg-lms-blue-dark"
+                  className="w-full bg-lms-green hover:bg-lms-green-dark"
                   disabled={isLoading}
                 >
                   {isLoading ? 'Logging in...' : 'Log in'}
@@ -156,12 +178,12 @@ const Login: React.FC = () => {
       </div>
       
       {/* Right side - Illustration */}
-      <div className="hidden md:flex md:w-1/2 bg-lms-blue text-white">
+      <div className="hidden md:flex md:w-1/2 bg-lms-green text-white">
         <div className="max-w-md mx-auto p-12 flex flex-col justify-center">
-          <School className="h-16 w-16 mb-6" />
-          <h2 className="text-3xl font-bold mb-4">Welcome to EduSphere LMS</h2>
+          <BridgeCrossing className="h-16 w-16 mb-6" />
+          <h2 className="text-3xl font-bold mb-4">Welcome to Campus Bridge</h2>
           <p className="text-lg mb-6">
-            The complete learning management solution for modern education.
+            The complete education management system for modern institutions.
           </p>
           
           <div className="space-y-4">

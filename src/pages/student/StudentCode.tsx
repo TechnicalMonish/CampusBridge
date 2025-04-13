@@ -66,11 +66,7 @@ const StudentCode: React.FC = () => {
             
             {selectedProblem && (
               <SubmissionHistory 
-                submissions={studentSubmissions.map(sub => ({
-                  ...sub,
-                  studentId: sub.studentId, // This ensures type compatibility
-                  submissionDate: sub.submissionDate
-                }))}
+                submissions={studentSubmissions}
                 problemId={selectedProblem}
               />
             )}

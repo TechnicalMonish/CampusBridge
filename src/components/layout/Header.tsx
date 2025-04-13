@@ -1,8 +1,9 @@
 
 import React from 'react';
-import { LogOut } from 'lucide-react';
+import { LogOut, BellRing } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import NotificationsPanel from './NotificationsPanel';
+import { toast } from 'sonner';
 
 interface HeaderProps {
   sidebarCollapsed: boolean;
@@ -13,8 +14,13 @@ const Header: React.FC<HeaderProps> = ({ sidebarCollapsed }) => {
   
   if (!user) return null;
   
+  const handleLogout = () => {
+    logout();
+    toast.success('You have been logged out successfully');
+  };
+  
   return (
-    <header className={`fixed top-0 right-0 z-30 bg-white border-b border-gray-200 h-16 transition-all duration-300 ${
+    <header className={`fixed top-0 right-0 z-30 bg-white border-b border-gray-200 h-16 transition-all duration-300 shadow-sm ${
       sidebarCollapsed ? 'left-20' : 'left-64'
     }`}>
       <div className="flex items-center justify-between h-full px-6">
@@ -26,8 +32,8 @@ const Header: React.FC<HeaderProps> = ({ sidebarCollapsed }) => {
           <NotificationsPanel />
           
           <button 
-            onClick={logout}
-            className="flex items-center text-gray-700 hover:text-red-500"
+            onClick={handleLogout}
+            className="flex items-center text-gray-700 hover:text-lms-green transition-colors"
           >
             <LogOut className="h-5 w-5 mr-1" />
             <span className="hidden sm:inline">Logout</span>
