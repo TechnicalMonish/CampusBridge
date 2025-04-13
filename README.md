@@ -4,6 +4,21 @@
 
 **URL**: https://github.com/TechnicalMonish/CampusBridge
 
+**Abstract**
+
+This Learning Management System (LMS) project was built to make everyday academic tasks easier and more efficient for students, faculty, and administrators. The idea was simple: create a platform that’s not only functional, but also clean, user-friendly, and enjoyable to use. From tracking attendance with clear visuals to checking weekly timetables, managing course materials, and viewing accomplishments—everything is brought together in one smooth experience.
+
+A key highlight of this LMS is the built-in online code compiler, which supports 3 to 5 programming languages and offers both dark and light modes for a better coding experience. We also developed three separate login portals for students, faculty, and admin, each offering role-specific access and features.
+
+Built using React and Tailwind CSS, the entire frontend is responsive, dynamic, and backend-ready. Whether it’s switching semesters, attending classes, or compiling code on the go, this LMS aims to simplify academic life in a modern and meaningful way.
+## What technologies are used for this project?
+
+This project is built with:
+
+- Vite
+- TypeScript
+- React
+- Tailwind CSS
 
 **Screenshots**
 
@@ -70,12 +85,5 @@
 <img width="1703" alt="Screenshot 2025-04-13 at 08 43 03" src="https://github.com/user-attachments/assets/0d70a3f2-e61f-4dde-b972-164b0e68d380" />
 
 
-## What technologies are used for this project?
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- Tailwind CSS
 
