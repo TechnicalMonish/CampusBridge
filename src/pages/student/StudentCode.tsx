@@ -8,6 +8,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
+import ProfileEditor from '@/components/student/ProfileEditor';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Separator } from '@/components/ui/separator';
 
 const StudentCode: React.FC = () => {
   const { user } = useAuth();
@@ -56,6 +59,27 @@ const StudentCode: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Problem List */}
           <div className="lg:col-span-1">
+            <Card className="mb-6">
+              <CardHeader>
+                <CardTitle className="text-lg">Your Profile</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex flex-col items-center text-center mb-4">
+                  <Avatar className="h-20 w-20 mb-4">
+                    <AvatarImage src={user.avatar || ''} />
+                    <AvatarFallback className="text-lg">
+                      {user.name.split(' ').map(n => n[0]).join('')}
+                    </AvatarFallback>
+                  </Avatar>
+                  <h3 className="font-medium text-lg">{user.name}</h3>
+                  <p className="text-sm text-gray-500">{user.email}</p>
+                  <p className="text-sm mt-2">{user.bio || 'Computer Science student'}</p>
+                </div>
+                <Separator className="my-4" />
+                <ProfileEditor />
+              </CardContent>
+            </Card>
+          
             <Card>
               <CardHeader>
                 <CardTitle className="text-lg">Coding Problems</CardTitle>

@@ -19,7 +19,15 @@ export interface User {
   name: string;
   email: string;
   role: UserRole;
+  avatar?: string | null;
+  bio?: string;
 }
+
+type ProfileUpdateData = {
+  name?: string;
+  bio?: string;
+  avatar?: string | null;
+};
 
 interface AuthContextType {
   user: User | null;
@@ -27,6 +35,7 @@ interface AuthContextType {
   login: (email: string, password: string) => Promise<boolean>;
   logout: () => void;
   isAuthenticated: boolean;
+  updateUserProfile: (data: ProfileUpdateData) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -86,12 +95,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     navigate('/login');
   };
 
+  // Update user profile
+  const updateUserProfile = (data: ProfileUpdateData) => {
+    if (!user) return;
+    
+    const updatedUser = { ...user, ...data };
+    setUser(updatedUser);
+    localStorage.setItem('lms_user', JSON.stringify(updatedUser));
+  };
+
   const value = {
     user,
     loading,
     login,
     logout,
-    isAuthenticated: !!user
+    isAuthenticated: !!user,
+    updateUserProfile
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
