@@ -1,11 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { GraduationCap, School, Shield, User, BridgeCrossing } from 'lucide-react';
+import { GraduationCap, School, Shield, User, Bridge } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { toast } from 'sonner';
 
@@ -18,14 +17,12 @@ const Login: React.FC = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  // Check for remembered email on component mount
   useEffect(() => {
     const rememberedEmail = localStorage.getItem('rememberedEmail');
     if (rememberedEmail) {
       setEmail(rememberedEmail);
       setRememberMe(true);
       
-      // Determine role based on email
       if (rememberedEmail.includes('student')) {
         setRole('student');
       } else if (rememberedEmail.includes('faculty')) {
@@ -48,7 +45,6 @@ const Login: React.FC = () => {
     const success = await login(email, password);
     
     if (success) {
-      // If remember me is checked, store the credentials
       if (rememberMe) {
         localStorage.setItem('rememberedEmail', email);
       } else {
@@ -60,7 +56,6 @@ const Login: React.FC = () => {
     setIsLoading(false);
   };
 
-  // Pre-fill email based on selected role
   const fillDemoCredentials = (selectedRole: 'student' | 'faculty' | 'admin') => {
     setRole(selectedRole);
     switch (selectedRole) {
@@ -79,11 +74,10 @@ const Login: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col md:flex-row">
-      {/* Left side - Form */}
       <div className="flex-1 flex flex-col justify-center items-center p-6 md:p-12">
         <div className="w-full max-w-md mb-6">
           <div className="flex items-center justify-center gap-2 mb-2">
-            <BridgeCrossing className="h-10 w-10 text-lms-blue" />
+            <Bridge className="h-10 w-10 text-lms-blue" />
             <h1 className="text-3xl font-bold text-lms-blue">Campus Bridge</h1>
           </div>
           <p className="text-center text-gray-500">Connecting education, empowering futures</p>
@@ -198,10 +192,9 @@ const Login: React.FC = () => {
         </Card>
       </div>
       
-      {/* Right side - Illustration */}
       <div className="hidden md:flex md:w-1/2 bg-lms-blue text-white">
         <div className="max-w-md mx-auto p-12 flex flex-col justify-center">
-          <BridgeCrossing className="h-16 w-16 mb-6" />
+          <Bridge className="h-16 w-16 mb-6" />
           <h2 className="text-3xl font-bold mb-4">Welcome to Campus Bridge</h2>
           <p className="text-lg mb-6">
             The complete education management system for modern institutions.

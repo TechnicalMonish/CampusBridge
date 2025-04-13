@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
@@ -13,10 +12,9 @@ import {
   Home, 
   Settings,
   User,
-  BridgeIcon
+  Bridge
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { BridgeCrossing } from 'lucide-react';
 
 interface SidebarProps {
   collapsed: boolean;
@@ -80,7 +78,7 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, toggleCollapse }) => {
       <div className="flex items-center justify-between p-4 border-b">
         {!collapsed && (
           <div className="flex items-center space-x-2">
-            <BridgeCrossing className="h-7 w-7 text-lms-blue" />
+            <Bridge className="h-7 w-7 text-lms-blue" />
             <h1 className="text-xl font-bold text-lms-blue">Campus Bridge</h1>
           </div>
         )}

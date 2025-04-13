@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import DashboardLayout from '@/components/layout/DashboardLayout';
 import { useAuth } from '@/contexts/AuthContext';
@@ -15,7 +14,7 @@ import {
   TabsList, 
   TabsTrigger 
 } from '@/components/ui/tabs';
-import { Pencil, Check, X, Mail, Phone, MapPin, Bookmark, Calendar } from 'lucide-react';
+import { Pencil, Check, X, Mail, Phone, MapPin, Bookmark, Calendar, Code } from 'lucide-react';
 import { toast } from 'sonner';
 
 const StudentProfile = () => {
@@ -30,14 +29,12 @@ const StudentProfile = () => {
   const [location, setLocation] = useState('Campus Residence Hall, Room 304');
   const [avatar, setAvatar] = useState<string | null>(null);
   
-  // Get student data
   const studentCourses = user?.id ? getStudentCourses(+user.id) : [];
   const codeSubmissions = user?.id ? getStudentCodeSubmissions(+user.id) : [];
   
   const completedAssignments = 8; // Sample data
   const attendanceRate = 92; // Sample data
   
-  // Handle avatar change
   const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -49,7 +46,6 @@ const StudentProfile = () => {
     }
   };
   
-  // Handle profile save
   const handleSave = () => {
     if (updateUserProfile) {
       updateUserProfile({ name, avatar });
@@ -58,7 +54,6 @@ const StudentProfile = () => {
     }
   };
   
-  // Handle cancel edit
   const handleCancel = () => {
     setName(user?.name || '');
     setEditing(false);
@@ -78,7 +73,6 @@ const StudentProfile = () => {
           
           <TabsContent value="profile">
             <div className="grid md:grid-cols-3 gap-6">
-              {/* Profile Card */}
               <Card className="md:col-span-1">
                 <CardHeader>
                   <CardTitle className="flex justify-between items-center">
@@ -178,7 +172,6 @@ const StudentProfile = () => {
                 </CardContent>
               </Card>
               
-              {/* Stats and Courses */}
               <div className="md:col-span-2 space-y-6">
                 <div className="grid grid-cols-3 gap-4">
                   <Card>
