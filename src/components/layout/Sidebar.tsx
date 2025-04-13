@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
@@ -12,7 +13,7 @@ import {
   Home, 
   Settings,
   User,
-  Bridge
+  Building
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -78,7 +79,7 @@ const Sidebar: React.FC<SidebarProps> = ({ collapsed, toggleCollapse }) => {
       <div className="flex items-center justify-between p-4 border-b">
         {!collapsed && (
           <div className="flex items-center space-x-2">
-            <Bridge className="h-7 w-7 text-lms-blue" />
+            <Building className="h-7 w-7 text-lms-blue" />
             <h1 className="text-xl font-bold text-lms-blue">Campus Bridge</h1>
           </div>
         )}

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { LogOut, BellRing, Bridge } from 'lucide-react';
+import { LogOut, BellRing, Building } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import NotificationsPanel from './NotificationsPanel';
 import { toast } from 'sonner';
@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ sidebarCollapsed }) => {
     }`}>
       <div className="flex items-center justify-between h-full px-6">
         <div className="flex items-center">
-          <Bridge className="h-6 w-6 text-lms-blue mr-2 hidden sm:block" />
+          <Building className="h-6 w-6 text-lms-blue mr-2 hidden sm:block" />
           <h2 className="text-xl font-semibold text-gray-800 capitalize">
             {user.role} Dashboard
           </h2>

@@ -4,7 +4,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { GraduationCap, School, Shield, User, Bridge } from 'lucide-react';
+import { GraduationCap, School, Shield, User, Building } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { toast } from 'sonner';
 
@@ -77,7 +77,7 @@ const Login: React.FC = () => {
       <div className="flex-1 flex flex-col justify-center items-center p-6 md:p-12">
         <div className="w-full max-w-md mb-6">
           <div className="flex items-center justify-center gap-2 mb-2">
-            <Bridge className="h-10 w-10 text-lms-blue" />
+            <Building className="h-10 w-10 text-lms-blue" />
             <h1 className="text-3xl font-bold text-lms-blue">Campus Bridge</h1>
           </div>
           <p className="text-center text-gray-500">Connecting education, empowering futures</p>
@@ -194,7 +194,7 @@ const Login: React.FC = () => {
       
       <div className="hidden md:flex md:w-1/2 bg-lms-blue text-white">
         <div className="max-w-md mx-auto p-12 flex flex-col justify-center">
-          <Bridge className="h-16 w-16 mb-6" />
+          <Building className="h-16 w-16 mb-6" />
           <h2 className="text-3xl font-bold mb-4">Welcome to Campus Bridge</h2>
           <p className="text-lg mb-6">
             The complete education management system for modern institutions.
