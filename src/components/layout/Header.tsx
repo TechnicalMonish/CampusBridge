@@ -25,7 +25,7 @@ const Header: React.FC<HeaderProps> = ({ sidebarCollapsed }) => {
     }`}>
       <div className="flex items-center justify-between h-full px-6">
         <div className="flex items-center">
-          <Building className="h-6 w-6 text-lms-blue mr-2 hidden sm:block" />
+          <Building className="h-6 w-6 text-lms-green mr-2 hidden sm:block" />
           <h2 className="text-xl font-semibold text-gray-800 capitalize">
             {user.role} Dashboard
           </h2>
@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ sidebarCollapsed }) => {
           
           <button 
             onClick={handleLogout}
-            className="flex items-center text-gray-700 hover:text-lms-blue transition-colors"
+            className="flex items-center text-gray-700 hover:text-lms-green transition-colors"
           >
             <LogOut className="h-5 w-5 mr-1" />
             <span className="hidden sm:inline">Logout</span>

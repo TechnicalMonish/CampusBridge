@@ -64,15 +64,15 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
                 lms: {
+                    blue: {
+                        light: '#D8E6FD',
+                        DEFAULT: '#3E92CC',
+                        dark: '#0A2463'
+                    },
                     green: {
                         light: '#E3F9ED',
-                        DEFAULT: '#38B27B',
-                        dark: '#2A8C61'
-                    },
-                    purple: {
-                        light: '#F3E8FF',
-                        DEFAULT: '#8B5CF6',
-                        dark: '#6D28D9'
+                        DEFAULT: '#0A2463',
+                        dark: '#001845'
                     },
                     gray: {
                         light: '#F5F5F5',

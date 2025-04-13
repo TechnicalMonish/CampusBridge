@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
@@ -77,15 +78,15 @@ const Login: React.FC = () => {
       <div className="flex-1 flex flex-col justify-center items-center p-6 md:p-12">
         <div className="w-full max-w-md mb-6">
           <div className="flex items-center justify-center gap-2 mb-2">
-            <Building className="h-10 w-10 text-lms-blue" />
-            <h1 className="text-3xl font-bold text-lms-blue">Campus Bridge</h1>
+            <Building className="h-10 w-10 text-lms-green" />
+            <h1 className="text-3xl font-bold text-lms-green">Campus Bridge</h1>
           </div>
           <p className="text-center text-gray-500">Connecting education, empowering futures</p>
         </div>
         
         <Card className="w-full max-w-md shadow-lg">
           <CardHeader>
-            <CardTitle className="text-lms-blue">Log in to your account</CardTitle>
+            <CardTitle className="text-lms-green">Log in to your account</CardTitle>
             <CardDescription>
               Enter your credentials to access your dashboard
             </CardDescription>
@@ -99,7 +100,7 @@ const Login: React.FC = () => {
                   <Button
                     type="button"
                     variant={role === 'student' ? 'default' : 'outline'}
-                    className={`flex flex-col items-center py-3 h-auto ${role === 'student' ? 'bg-lms-blue hover:bg-lms-blue-dark' : ''}`}
+                    className={`flex flex-col items-center py-3 h-auto ${role === 'student' ? 'bg-lms-green hover:bg-lms-green-dark' : ''}`}
                     onClick={() => fillDemoCredentials('student')}
                   >
                     <User className="h-5 w-5 mb-1" />
@@ -109,7 +110,7 @@ const Login: React.FC = () => {
                   <Button
                     type="button"
                     variant={role === 'faculty' ? 'default' : 'outline'}
-                    className={`flex flex-col items-center py-3 h-auto ${role === 'faculty' ? 'bg-lms-blue hover:bg-lms-blue-dark' : ''}`}
+                    className={`flex flex-col items-center py-3 h-auto ${role === 'faculty' ? 'bg-lms-green hover:bg-lms-green-dark' : ''}`}
                     onClick={() => fillDemoCredentials('faculty')}
                   >
                     <GraduationCap className="h-5 w-5 mb-1" />
@@ -119,7 +120,7 @@ const Login: React.FC = () => {
                   <Button
                     type="button"
                     variant={role === 'admin' ? 'default' : 'outline'}
-                    className={`flex flex-col items-center py-3 h-auto ${role === 'admin' ? 'bg-lms-blue hover:bg-lms-blue-dark' : ''}`}
+                    className={`flex flex-col items-center py-3 h-auto ${role === 'admin' ? 'bg-lms-green hover:bg-lms-green-dark' : ''}`}
                     onClick={() => fillDemoCredentials('admin')}
                   >
                     <Shield className="h-5 w-5 mb-1" />
@@ -175,7 +176,7 @@ const Login: React.FC = () => {
                 
                 <Button 
                   type="submit" 
-                  className="w-full bg-lms-blue hover:bg-lms-blue-dark"
+                  className="w-full bg-lms-green hover:bg-lms-green-dark"
                   disabled={isLoading}
                 >
                   {isLoading ? 'Logging in...' : 'Log in'}
@@ -192,7 +193,7 @@ const Login: React.FC = () => {
         </Card>
       </div>
       
-      <div className="hidden md:flex md:w-1/2 bg-lms-blue text-white">
+      <div className="hidden md:flex md:w-1/2 bg-lms-green text-white">
         <div className="max-w-md mx-auto p-12 flex flex-col justify-center">
           <Building className="h-16 w-16 mb-6" />
           <h2 className="text-3xl font-bold mb-4">Welcome to Campus Bridge</h2>

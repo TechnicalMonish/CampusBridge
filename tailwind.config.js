@@ -51,12 +51,12 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         lms: {
-          green: "#2563EB", // Changed to blue
-          "green-dark": "#1E40AF", // Darker blue
-          "green-light": "#DBEAFE", // Light blue
-          blue: "#2563EB",
-          "blue-dark": "#1E40AF",
-          "blue-light": "#DBEAFE"
+          green: "#0A2463", // Deep blue
+          "green-dark": "#001845", // Darker blue
+          "green-light": "#D8E6FD", // Light blue
+          blue: "#3E92CC", // Medium blue
+          "blue-dark": "#2A6CA6", // Darker medium blue
+          "blue-light": "#EBF5FF" // Very light blue
         },
       },
       borderRadius: {

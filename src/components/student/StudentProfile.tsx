@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -29,7 +30,7 @@ const StudentProfile: React.FC<StudentProfileProps> = ({ user }) => {
         <div className="flex flex-col items-center text-center mb-4">
           <Avatar className="h-20 w-20 mb-4">
             <AvatarImage src={user.avatar || ''} />
-            <AvatarFallback className="text-lg">
+            <AvatarFallback className="bg-lms-green-light text-lms-green text-lg">
               {user.name.split(' ').map(n => n[0]).join('')}
             </AvatarFallback>
           </Avatar>
@@ -39,7 +40,7 @@ const StudentProfile: React.FC<StudentProfileProps> = ({ user }) => {
         </div>
         <Separator className="my-4" />
         <div className="flex justify-center">
-          <Button variant="outline" size="sm" className="flex items-center gap-2" asChild>
+          <Button variant="outline" size="sm" className="flex items-center gap-2 hover:bg-lms-green-light hover:text-lms-green" asChild>
             <Link to="/student/profile">
               <Edit size={16} />
               <span>Edit Profile</span>
