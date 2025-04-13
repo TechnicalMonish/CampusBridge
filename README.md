@@ -11,6 +11,9 @@ This Learning Management System (LMS) project was built to make everyday academi
 A key highlight of this LMS is the built-in online code compiler, which supports 3 to 5 programming languages and offers both dark and light modes for a better coding experience. We also developed three separate login portals for students, faculty, and admin, each offering role-specific access and features.
 
 Built using React and Tailwind CSS, the entire frontend is responsive, dynamic, and backend-ready. Whether it’s switching semesters, attending classes, or compiling code on the go, this LMS aims to simplify academic life in a modern and meaningful way.
+
+*This project aims to bridge the gap between students and their academic progress in a modern and efficient way.*
+
 ## What technologies are used for this project?
 
 This project is built with:
