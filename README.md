@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://github.com/TechnicalMonish/CampusBridge/
+**URL**: https://github.com/TechnicalMonish/CampusBridge
 
 
 **Screenshots**
