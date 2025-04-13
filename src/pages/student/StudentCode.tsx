@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useData } from '@/contexts/DataContext';
@@ -65,7 +66,11 @@ const StudentCode: React.FC = () => {
             
             {selectedProblem && (
               <SubmissionHistory 
-                submissions={studentSubmissions}
+                submissions={studentSubmissions.map(sub => ({
+                  ...sub,
+                  studentId: sub.studentId, // This ensures type compatibility
+                  submissionDate: sub.submissionDate
+                }))}
                 problemId={selectedProblem}
               />
             )}
