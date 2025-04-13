@@ -9,10 +9,7 @@
 
 - Student Login.
   <img width="1710" alt="Screenshot 2025-04-13 at 08 39 47" src="https://github.com/user-attachments/assets/8f140808-b01e-455b-a625-803c0781b1b7" />
-- Faculty Login.
-  <img width="1710" alt="Screenshot 2025-04-13 at 08 39 55" src="https://github.com/user-attachments/assets/ecdda1ed-0828-4815-9651-50aa35b10726" />
-- Admin Login.
-  <img width="1710" alt="Screenshot 2025-04-13 at 08 40 01" src="https://github.com/user-attachments/assets/1fd8b2ba-9d00-4e7e-8ec1-446b44ac1939" />
+
 - Student Dashboard.
   <img width="1710" alt="Screenshot 2025-04-13 at 08 40 32" src="https://github.com/user-attachments/assets/ca4555c0-9487-44ad-9534-b9d893282668" />
 - Student Courses.
@@ -35,14 +32,43 @@
   <img width="1710" alt="Screenshot 2025-04-13 at 08 41 42" src="https://github.com/user-attachments/assets/4d61441d-aea9-4be5-be13-61d733d4438a" />
   <img width="1710" alt="Screenshot 2025-04-13 at 08 41 46" src="https://github.com/user-attachments/assets/7205ecb0-64da-4bcb-8edb-73045ddfaa44" />
 
+- Faculty Login.
+  <img width="1710" alt="Screenshot 2025-04-13 at 08 39 55" src="https://github.com/user-attachments/assets/ecdda1ed-0828-4815-9651-50aa35b10726" />
 
-**Use GitHub Codespaces**
+- Faculty Dashboard.
+<img width="1710" alt="Screenshot 2025-04-13 at 08 41 57" src="https://github.com/user-attachments/assets/8846134e-b50d-40a4-809a-ca8aead05ccc" />
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+
+  <img width="1710" alt="Screenshot 2025-04-13 at 08 42 01" src="https://github.com/user-attachments/assets/de3bca93-f95d-4ac9-882c-9c72f646d90b" />
+
+- Faculty Course Materials.
+  <img width="1710" alt="Screenshot 2025-04-13 at 08 42 03" src="https://github.com/user-attachments/assets/3224785c-ea0b-44b1-ac89-e4214ec45bb7" />
+
+- Faculty Assignments.
+<img width="1710" alt="Screenshot 2025-04-13 at 08 42 05" src="https://github.com/user-attachments/assets/a8253a5d-9b0b-4e42-b81b-ee1e006b57bb" />
+
+- Faculty Student Analytics.
+<img width="1710" alt="Screenshot 2025-04-13 at 08 42 07" src="https://github.com/user-attachments/assets/db379d0f-d901-4d00-9692-1a2144c94ea1" />
+
+- Admin Login.
+  <img width="1710" alt="Screenshot 2025-04-13 at 08 40 01" src="https://github.com/user-attachments/assets/1fd8b2ba-9d00-4e7e-8ec1-446b44ac1939" />
+- Admin Dashboard.
+  <img width="1710" alt="Screenshot 2025-04-13 at 08 42 26" src="https://github.com/user-attachments/assets/ebb15457-58bb-4c95-ad15-ad37144def90" />
+
+- All Courses.
+  <img width="1710" alt="Screenshot 2025-04-13 at 08 42 33" src="https://github.com/user-attachments/assets/9d7fc5eb-ec07-4cb4-bd22-219c79dbc2ce" />
+
+- Faculty Members.
+  <img width="1710" alt="Screenshot 2025-04-13 at 08 42 36" src="https://github.com/user-attachments/assets/b54a4265-b575-45de-a4df-8e683dcb20e1" />
+
+- Students.
+<img width="1699" alt="Screenshot 2025-04-13 at 08 42 39" src="https://github.com/user-attachments/assets/83e6276a-e335-49bf-9794-7d10f53e2a9b" />
+- Analytics.
+<img width="1710" alt="Screenshot 2025-04-13 at 08 42 40" src="https://github.com/user-attachments/assets/f73e6366-2197-4dea-b066-57eace0b9a48" />
+<img width="1710" alt="Screenshot 2025-04-13 at 08 42 44" src="https://github.com/user-attachments/assets/24b0ef1d-9afe-429d-bf83-9ac3d2599911" />
+<img width="1710" alt="Screenshot 2025-04-13 at 08 42 58" src="https://github.com/user-attachments/assets/a7ea7074-12db-4759-b4f0-cbe2f32b8af1" />
+<img width="1703" alt="Screenshot 2025-04-13 at 08 43 03" src="https://github.com/user-attachments/assets/0d70a3f2-e61f-4dde-b972-164b0e68d380" />
+
 
 ## What technologies are used for this project?
 
