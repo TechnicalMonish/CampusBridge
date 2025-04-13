@@ -5,10 +5,10 @@ import { toast } from 'sonner';
 
 // Dummy data for users
 const USERS = [
-  { id: 1, name: 'John Doe', email: 'student1@example.com', password: 'password123', role: 'student' },
-  { id: 2, name: 'Jane Smith', email: 'student2@example.com', password: 'password123', role: 'student' },
-  { id: 3, name: 'Dr. Robert Johnson', email: 'faculty@example.com', password: 'password123', role: 'faculty' },
-  { id: 4, name: 'Admin User', email: 'admin@example.com', password: 'password123', role: 'admin' }
+  { id: 1, name: 'John Doe', email: 'student1@example.com', password: 'password123', role: 'student' as UserRole },
+  { id: 2, name: 'Jane Smith', email: 'student2@example.com', password: 'password123', role: 'student' as UserRole },
+  { id: 3, name: 'Dr. Robert Johnson', email: 'faculty@example.com', password: 'password123', role: 'faculty' as UserRole },
+  { id: 4, name: 'Admin User', email: 'admin@example.com', password: 'password123', role: 'admin' as UserRole }
 ];
 
 // Type definitions
@@ -59,8 +59,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     if (foundUser) {
       // Remove password before storing user
       const { password, ...userWithoutPassword } = foundUser;
-      setUser(userWithoutPassword);
-      localStorage.setItem('lms_user', JSON.stringify(userWithoutPassword));
+      // Ensure the role is properly typed as UserRole
+      const typedUser: User = {
+        ...userWithoutPassword,
+        role: userWithoutPassword.role as UserRole
+      };
+      
+      setUser(typedUser);
+      localStorage.setItem('lms_user', JSON.stringify(typedUser));
       
       toast.success('Logged in successfully!');
       setLoading(false);
