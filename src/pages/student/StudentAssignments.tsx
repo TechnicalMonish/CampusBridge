@@ -7,6 +7,7 @@ import DashboardLayout from '@/components/layout/DashboardLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import AIAssistant from '@/components/student/AIAssistant';
 
 const StudentAssignments: React.FC = () => {
   const { user } = useAuth();
@@ -125,6 +126,11 @@ const StudentAssignments: React.FC = () => {
             </CardContent>
           </Card>
         </div>
+        
+        <AIAssistant 
+          studentSkills={['React', 'JavaScript', 'Python', 'C++', 'Java']} 
+          studentName={user.name}
+        />
       </div>
     </DashboardLayout>
   );

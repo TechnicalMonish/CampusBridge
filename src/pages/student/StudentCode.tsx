@@ -8,6 +8,7 @@ import StudentProfile from '@/components/student/StudentProfile';
 import ProblemList from '@/components/student/ProblemList';
 import ProblemDetail from '@/components/student/ProblemDetail';
 import SubmissionHistory from '@/components/student/SubmissionHistory';
+import AIAssistant from '@/components/student/AIAssistant';
 
 const StudentCode: React.FC = () => {
   const { user } = useAuth();
@@ -72,6 +73,11 @@ const StudentCode: React.FC = () => {
             )}
           </div>
         </div>
+        
+        <AIAssistant 
+          studentSkills={['React', 'JavaScript', 'TypeScript', 'Node.js', 'CSS']} 
+          studentName={user.name}
+        />
       </div>
     </DashboardLayout>
   );
